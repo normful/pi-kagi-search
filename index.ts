@@ -66,7 +66,7 @@ function setToken(token: string): void {
 async function kagiSearch(
   query: string, 
   token: string, 
-  limit: number = 10,
+  limit: number = 30,
   signal?: AbortSignal
 ): Promise<{ data: SearchResult[] }> {
   const response = await fetch(
@@ -220,7 +220,7 @@ export default function (pi: ExtensionAPI) {
       query: Type.String(),
       limit: Type.Optional(
         Type.Number({
-          description: "Max results (default: 10)",
+          description: "Max results",
           minimum: 1,
           maximum: 50,
         }),
@@ -249,7 +249,7 @@ export default function (pi: ExtensionAPI) {
         };
       }
 
-      const limit = Math.min(params.limit ?? 10, 50);
+      const limit = Math.min(params.limit ?? 30, 50);
 
       onUpdate?.({
         content: [{ type: "text", text: `Searching Kagi for "${params.query}"...` }],
