@@ -52,16 +52,6 @@ function getToken(): string | undefined {
   const configToken = loadConfig().sessionToken;
   if (configToken) return configToken;
   
-  // 3. Check plain text file as last fallback
-  const plainTextFile = path.join(os.homedir(), ".kagi_session_token");
-  try {
-    if (fs.existsSync(plainTextFile)) {
-      return fs.readFileSync(plainTextFile, "utf-8").trim();
-    }
-  } catch (e) {
-    // Ignore errors
-  }
-  
   return undefined;
 }
 
