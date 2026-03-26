@@ -188,11 +188,11 @@ function formatSearchResults(results: SearchResult[]): string {
   let output = "";
 
   if (webResults.length > 0) {
-    output += "## Search Results\n\n";
+    output += "# Search Results\n\n";
     for (let i = 0; i < webResults.length; i++) {
       const r = webResults[i];
-      output += `### ${i + 1}. ${r.title}\n`;
-      output += `**URL:** ${r.url}\n`;
+      output += `## ${i + 1}. ${r.title}\n`;
+      output += `URL: ${r.url}\n`;
       if (r.snippet) {
         output += `${r.snippet}\n`;
       }
